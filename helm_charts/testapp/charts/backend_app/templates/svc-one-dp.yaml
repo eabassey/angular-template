@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-one
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: svc-one
+  template:
+    metadata:
+      labels:
+        app: svc-one
+    spec:
+      containers:
+      - name: svc-one
+        image: abassey/svc-one:1.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+      restartPolicy: Always
+

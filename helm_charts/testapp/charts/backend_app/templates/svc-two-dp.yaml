@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-two
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: svc-two
+  template:
+    metadata:
+      labels:
+        app: svc-two
+    spec:
+      containers:
+      - name: svc-two
+        image: abassey/svc-two:1.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
